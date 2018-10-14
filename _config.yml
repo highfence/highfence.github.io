@@ -16,10 +16,10 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
+title                    : "Highfence # in pangyo"
 title_separator          : "-"
-name                     : "Your Name"
-description              : "An amazing website."
+name                     : "Highfence"
+description              : "좋은 게임 개발자가 됩시다."
 url                      : "https://github.com/highfence/highfence.github.io"
 baseurl                  : ""# the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
