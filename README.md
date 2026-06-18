@@ -13,10 +13,12 @@ Only notes explicitly marked with `published: true` should be copied into this r
 ```powershell
 npm ci
 npm run sync:vault
-npx quartz build
+npm run build:pages
 npx quartz build --serve
 ```
 
 ## Publishing Rule
 
 Do not copy the whole Obsidian vault into this repository. Review every public post for company-internal details, private project names, logs, screenshots, credentials, and personal identifiers before publishing.
+
+GitHub Pages is configured to publish from the repository root. Run `npm run build:pages` before committing so the checked-in static files match `content/`.
