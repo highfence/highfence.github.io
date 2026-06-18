@@ -39,3 +39,22 @@ Get-ChildItem -LiteralPath $resolvedPublic.Path -Force |
     ForEach-Object {
         Copy-Item -LiteralPath $_.FullName -Destination $rootPath -Recurse -Force
     }
+
+Get-ChildItem -LiteralPath $resolvedPublic.Path -Recurse -File -Filter "*.html" |
+    Where-Object {
+        $_.Name -notin @("index.html", "404.html")
+    } |
+    ForEach-Object {
+        $publicPrefix = $resolvedPublic.Path.TrimEnd([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
+        if (-not $_.FullName.StartsWith($publicPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+            throw "Refusing to copy path outside public output: $($_.FullName)"
+        }
+
+        $relativePath = $_.FullName.Substring($publicPrefix.Length)
+        $withoutExtension = [regex]::Replace($relativePath, "\.html$", "")
+        $cleanUrlIndex = Join-Path $rootPath (Join-Path $withoutExtension "index.html")
+        $cleanUrlDir = Split-Path -Parent $cleanUrlIndex
+
+        New-Item -ItemType Directory -Force -Path $cleanUrlDir | Out-Null
+        Copy-Item -LiteralPath $_.FullName -Destination $cleanUrlIndex -Force
+    }

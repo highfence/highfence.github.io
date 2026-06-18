@@ -33,6 +33,16 @@ Get-ChildItem -LiteralPath $resolvedVault.Path -Filter "*.md" -File | ForEach-Ob
         throw "Could not derive slug from $($_.FullName)"
     }
 
+    $publicRaw = $raw
+    $dateMatch = [regex]::Match($publicRaw, "(?m)^date:\s*(\d{4}-\d{2}-\d{2})\s*$")
+    if (-not $dateMatch.Success) {
+        $dateMatch = [regex]::Match($publicRaw, "(?m)^created:\s*(\d{4}-\d{2}-\d{2})\s*$")
+    }
+    if ($dateMatch.Success) {
+        $publishedFlag = [regex]::new("(?m)^published:\s*true\s*$")
+        $publicRaw = $publishedFlag.Replace($publicRaw, "published: $($dateMatch.Groups[1].Value)", 1)
+    }
+
     $target = Join-Path $resolvedOutput.Path "$slug.md"
-    Set-Content -LiteralPath $target -Value $raw -Encoding UTF8
+    Set-Content -LiteralPath $target -Value $publicRaw -Encoding UTF8
 }

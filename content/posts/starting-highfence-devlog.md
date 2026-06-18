@@ -6,7 +6,7 @@ category: blog
 title: highfence devlog를 다시 열며
 description: 다시 개인 개발 로그를 시작한다.
 slug: starting-highfence-devlog
-published: true
+published: 2026-06-18
 blog_status: published
 date: 2026-06-18
 ---
