@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>highfence devlog</title>
+      <link>https://highfence.github.io</link>
+      <description>최근 10 건 on highfence devlog</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>highfence devlog</title>
+    <link>https://highfence.github.io/</link>
+    <guid>https://highfence.github.io/</guid>
+    <description><![CDATA[ highfence의 개인 개발 로그 ]]></description>
+    <pubDate>Wed, 17 Jun 2026 15:00:00 GMT</pubDate>
+  </item><item>
+    <title>highfence devlog를 다시 열며</title>
+    <link>https://highfence.github.io/posts/starting-highfence-devlog</link>
+    <guid>https://highfence.github.io/posts/starting-highfence-devlog</guid>
+    <description><![CDATA[ 다시 개인 개발 로그를 시작한다. ]]></description>
+    <pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

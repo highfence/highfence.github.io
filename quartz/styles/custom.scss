@@ -1,0 +1,106 @@
+@use "./base.scss";
+
+:root {
+  --contentWidth: 760px;
+}
+
+body {
+  line-height: 1.75;
+}
+
+.page-title a {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+article h1 {
+  letter-spacing: 0;
+}
+
+article img.devlog-avatar {
+  width: 112px;
+  height: 112px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--lightgray);
+  margin: 0 0 1rem 0;
+}
+
+article .devlog-kicker {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+article .devlog-lede {
+  color: var(--darkgray);
+  font-size: 1.08rem;
+  max-width: 38rem;
+}
+
+article .devlog-section {
+  border-top: 1px solid var(--lightgray);
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+}
+
+article .post-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+article .post-list li {
+  border-bottom: 1px solid var(--lightgray);
+  padding: 0.95rem 0;
+}
+
+article .post-list a {
+  font-weight: 700;
+}
+
+article .post-list time {
+  color: var(--gray);
+  display: block;
+  font-size: 0.88rem;
+  margin-top: 0.1rem;
+}
+
+article .tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+article .tag-row a {
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  font-size: 0.86rem;
+  padding: 0.2rem 0.55rem;
+}
+
+.explorer {
+  font-size: 0.94rem;
+}
+
+@media (max-width: 700px) {
+  .page-title {
+    font-size: 1.75rem;
+    line-height: 1.15;
+  }
+
+  .article-title {
+    font-size: 2.25rem;
+    line-height: 1.12;
+  }
+
+  article .devlog-lede {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  article .devlog-section {
+    margin-top: 1.5rem;
+  }
+}
