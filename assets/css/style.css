@@ -319,11 +319,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 @media (max-width:900px){
   .container{padding:0 18px}
   .site-header{padding-top:14px}
-  .header-inner{flex-wrap:wrap;align-items:flex-start;gap:10px;padding:16px 0}
+  .header-inner{flex-wrap:wrap;align-items:flex-start;gap:10px;padding:16px 18px}
   .logo{flex:1 0 100%;font-size:13px}
   .theme-toggle{order:2;box-shadow:3px 3px 0 var(--ink)}
   .site-nav{order:3;width:100%;gap:15px;overflow-x:auto}
   .main{padding-top:36px}
+  .home-copy,.post-row-title,.post-row-summary,.post-title,.post-content p,.post-content li{
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
   .post-row{flex-direction:column-reverse;align-items:flex-start;gap:9px}
   .post-row-meta{justify-content:flex-start;white-space:normal}
   .post-shell{display:block}
