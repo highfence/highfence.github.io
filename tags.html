@@ -6,21 +6,35 @@ permalink: /tags/
 
 <section class="page-narrow">
   <h1 class="page-title">태그</h1>
-  {% assign sorted_tags = site.tags | sort %}
-  {% for tag in sorted_tags %}
-    {% assign tag_name = tag[0] %}
-    {% assign posts = tag[1] %}
-    {% assign tag_slug = tag_name | slugify %}
-    {% if tag_name == '일상' %}{% assign tag_slug = 'life' %}{% endif %}
-    {% if tag_name == '성능' %}{% assign tag_slug = 'performance' %}{% endif %}
-    {% if tag_name == 'C++' %}{% assign tag_slug = 'cpp' %}{% endif %}
-    <section class="tag-block" id="{{ tag_slug }}">
-      <h2>#{{ tag_name }}</h2>
-      <div class="post-list">
-        {% for post in posts %}
-          {% include post-row.html post=post %}
-        {% endfor %}
-      </div>
-    </section>
+  {% assign rendered_tags = "|" %}
+  {% for seed_post in site.posts %}
+    {% assign tag_name = seed_post.tag %}
+    {% unless tag_name %}
+      {% assign tag_name = seed_post.tags | first %}
+    {% endunless %}
+    {% if tag_name %}
+      {% assign tag_key = tag_name | strip | downcase | prepend: "|" | append: "|" %}
+      {% unless rendered_tags contains tag_key %}
+        {% assign tag_slug = tag_name | strip | downcase | replace: "++", "pp" | replace: "#", "sharp" | replace: " ", "-" | replace: "/", "-" %}
+        {% if tag_name == "일상" %}{% assign tag_slug = "life" %}{% endif %}
+        {% if tag_name == "성능" %}{% assign tag_slug = "performance" %}{% endif %}
+        {% if tag_name == "C++" %}{% assign tag_slug = "cpp" %}{% endif %}
+        <section class="tag-block" id="{{ tag_slug }}">
+          <h2>#{{ tag_name }}</h2>
+          <div class="post-list">
+            {% for post in site.posts %}
+              {% assign post_tag = post.tag %}
+              {% unless post_tag %}
+                {% assign post_tag = post.tags | first %}
+              {% endunless %}
+              {% if post_tag == tag_name %}
+                {% include post-row.html post=post %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+        {% assign rendered_tags = rendered_tags | append: tag_name | strip | downcase | append: "|" %}
+      {% endunless %}
+    {% endif %}
   {% endfor %}
 </section>

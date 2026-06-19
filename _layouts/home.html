@@ -2,12 +2,32 @@
 layout: default
 ---
 
+{% assign rendered_tags = "|" %}
+{% assign rendered_tag_count = 0 %}
+{% assign home_tag_limit = site.home_tag_limit | default: 5 | plus: 0 %}
+
 <nav class="m-tagbar" aria-label="태그 필터">
   <a href="{{ '/' | relative_url }}" class="active">전체</a>
-  <a href="{{ '/tags/#unreal' | relative_url }}">Unreal</a>
-  <a href="{{ '/tags/#cpp' | relative_url }}">C++</a>
-  <a href="{{ '/tags/#performance' | relative_url }}">성능</a>
-  <a href="{{ '/tags/#life' | relative_url }}">일상</a>
+  {% for post in site.posts %}
+    {% assign tag_name = post.tag %}
+    {% unless tag_name %}
+      {% assign tag_name = post.tags | first %}
+    {% endunless %}
+    {% if tag_name %}
+      {% if rendered_tag_count < home_tag_limit %}
+        {% assign tag_key = tag_name | strip | downcase | prepend: "|" | append: "|" %}
+        {% unless rendered_tags contains tag_key %}
+          {% assign tag_slug = tag_name | strip | downcase | replace: "++", "pp" | replace: "#", "sharp" | replace: " ", "-" | replace: "/", "-" %}
+          {% if tag_name == "일상" %}{% assign tag_slug = "life" %}{% endif %}
+          {% if tag_name == "성능" %}{% assign tag_slug = "performance" %}{% endif %}
+          {% if tag_name == "C++" %}{% assign tag_slug = "cpp" %}{% endif %}
+          <a href="{{ '/tags/#' | append: tag_slug | relative_url }}">{{ tag_name }}</a>
+          {% assign rendered_tags = rendered_tags | append: tag_name | strip | downcase | append: "|" %}
+          {% assign rendered_tag_count = rendered_tag_count | plus: 1 %}
+        {% endunless %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
 </nav>
 
 <section class="home-intro">

@@ -11,10 +11,10 @@ layout: default
 {% unless primary_tag %}
   {% assign primary_tag = page.tags | first %}
 {% endunless %}
-{% assign primary_tag_slug = primary_tag | slugify %}
-{% if primary_tag == '일상' %}{% assign primary_tag_slug = 'life' %}{% endif %}
-{% if primary_tag == '성능' %}{% assign primary_tag_slug = 'performance' %}{% endif %}
-{% if primary_tag == 'C++' %}{% assign primary_tag_slug = 'cpp' %}{% endif %}
+{% assign primary_tag_slug = primary_tag | strip | downcase | replace: "++", "pp" | replace: "#", "sharp" | replace: " ", "-" | replace: "/", "-" %}
+{% if primary_tag == "일상" %}{% assign primary_tag_slug = "life" %}{% endif %}
+{% if primary_tag == "성능" %}{% assign primary_tag_slug = "performance" %}{% endif %}
+{% if primary_tag == "C++" %}{% assign primary_tag_slug = "cpp" %}{% endif %}
 
 <div class="post-shell">
   <article class="post-article">
