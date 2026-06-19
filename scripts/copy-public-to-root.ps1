@@ -11,6 +11,8 @@ $resolvedPublic = Resolve-Path -LiteralPath $Public
 $rootPath = $resolvedRoot.Path.TrimEnd([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar)
 $generatedTargets = @(
     "404.html",
+    "about",
+    "about.html",
     "favicon.ico",
     "index.html",
     "index.css",
