@@ -378,4 +378,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   }
   .post-row-meta .tag-chip{flex:0 0 auto}
   .post-row-title{font-size:17px}
+  .post-title,.page-title{
+    font-size:26px;
+    overflow-wrap:break-word;
+    word-break:keep-all;
+  }
 }
