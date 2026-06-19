@@ -2,6 +2,14 @@
 layout: default
 ---
 
+<nav class="m-tagbar" aria-label="태그 필터">
+  <a href="{{ '/' | relative_url }}" class="active">전체</a>
+  <a href="{{ '/tags/#unreal' | relative_url }}">Unreal</a>
+  <a href="{{ '/tags/#cpp' | relative_url }}">C++</a>
+  <a href="{{ '/tags/#performance' | relative_url }}">성능</a>
+  <a href="{{ '/tags/#life' | relative_url }}">일상</a>
+</nav>
+
 <section class="home-intro">
   <h1 class="sr-only">{{ site.title }}</h1>
   <p class="terminal-label">$ cat ./about</p>

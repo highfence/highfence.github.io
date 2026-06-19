@@ -35,11 +35,25 @@
           <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
           <a href="https://github.com/highfence">GitHub</a>
         </nav>
+        <div class="theme-switch" data-desktop-switch role="group" aria-label="테마 전환">
+          <button class="theme-opt" type="button" data-theme-set="light">◐ 라이트</button>
+          <button class="theme-opt" type="button" data-theme-set="dark">◑ 다크</button>
+        </div>
+        <button class="m-burger" id="navBurger" type="button" aria-label="메뉴" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="m-drawer" id="navDrawer" aria-label="모바일 메뉴">
+        <a href="{{ '/posts/' | relative_url }}">글</a>
+        <a href="{{ '/tags/' | relative_url }}">태그</a>
+        <a href="{{ '/about/' | relative_url }}">소개</a>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+        <a href="https://github.com/highfence">GitHub</a>
         <div class="theme-switch" role="group" aria-label="테마 전환">
           <button class="theme-opt" type="button" data-theme-set="light">◐ 라이트</button>
           <button class="theme-opt" type="button" data-theme-set="dark">◑ 다크</button>
         </div>
-      </div>
+      </nav>
     </header>
     <main class="container main">
       {{ content }}

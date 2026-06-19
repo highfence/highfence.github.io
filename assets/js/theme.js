@@ -14,3 +14,13 @@
   });
   apply(root.dataset.theme || "light");
 })();
+
+(function () {
+  var burger = document.getElementById("navBurger");
+  var drawer = document.getElementById("navDrawer");
+  if (!burger || !drawer) return;
+  burger.addEventListener("click", function () {
+    var open = drawer.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+})();
