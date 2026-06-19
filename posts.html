@@ -1,0 +1,15 @@
+---
+layout: default
+title: 글
+permalink: /posts/
+---
+
+<section class="post-list-section">
+  <h1 class="page-title">글</h1>
+  <h2 class="section-label">All posts</h2>
+  <div class="post-list">
+    {% for post in site.posts %}
+      {% include post-row.html post=post %}
+    {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,25 @@
+{% assign post = include.post %}
+{% assign read_time = post.read_time %}
+{% unless read_time %}
+  {% assign text_size = post.content | strip_html | strip_newlines | size %}
+  {% assign read_time = text_size | divided_by: 650 | plus: 1 %}
+{% endunless %}
+{% assign primary_tag = post.tag %}
+{% unless primary_tag %}
+  {% assign primary_tag = post.tags | first %}
+{% endunless %}
+
+<a class="post-row" href="{{ post.url | relative_url }}">
+  <span class="post-row-main">
+    <h3 class="post-row-title">{{ post.title }}</h3>
+    {% if post.summary %}
+      <p class="post-row-summary">{{ post.summary }}</p>
+    {% endif %}
+  </span>
+  <span class="post-row-meta">
+    {% if primary_tag %}
+      <span class="tag-chip {% if primary_tag == '일상' or primary_tag == 'life' %}muted{% endif %}">{{ primary_tag }}</span>
+    {% endif %}
+    <span>{{ post.date | date: "%m.%d" }} · {{ read_time }}분</span>
+  </span>
+</a>

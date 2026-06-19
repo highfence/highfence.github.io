@@ -1,0 +1,26 @@
+---
+layout: default
+title: 태그
+permalink: /tags/
+---
+
+<section class="page-narrow">
+  <h1 class="page-title">태그</h1>
+  {% assign sorted_tags = site.tags | sort %}
+  {% for tag in sorted_tags %}
+    {% assign tag_name = tag[0] %}
+    {% assign posts = tag[1] %}
+    {% assign tag_slug = tag_name | slugify %}
+    {% if tag_name == '일상' %}{% assign tag_slug = 'life' %}{% endif %}
+    {% if tag_name == '성능' %}{% assign tag_slug = 'performance' %}{% endif %}
+    {% if tag_name == 'C++' %}{% assign tag_slug = 'cpp' %}{% endif %}
+    <section class="tag-block" id="{{ tag_slug }}">
+      <h2>#{{ tag_name }}</h2>
+      <div class="post-list">
+        {% for post in posts %}
+          {% include post-row.html post=post %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</section>

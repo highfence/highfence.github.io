@@ -1,0 +1,29 @@
+title: highfence devlog
+description: 게임 개발자로 일하면서 배운 것과 삽질한 것을 남기는 개인 devlog
+url: "https://highfence.github.io"
+baseurl: ""
+lang: ko-KR
+timezone: Asia/Seoul
+
+permalink: /posts/:slug/
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - node_modules
+  - public
+  - vendor
+  - Gemfile.lock
+  - README.md
+  - LICENSE.txt
