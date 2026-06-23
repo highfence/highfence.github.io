@@ -1,0 +1,46 @@
+{% assign now_seconds = site.time | date: "%s" | plus: 0 %}
+{% assign active_days = 0 %}
+{% assign recent_posts = 0 %}
+
+<aside class="activity-panel" aria-label="글 발행 잔디">
+  <div class="activity-head">
+    <p class="activity-kicker">$ git log --garden</p>
+    <h2>writing garden</h2>
+  </div>
+
+  <div class="activity-grid" role="list" aria-label="최근 98일 글 발행 기록">
+    {% for index in (0..97) %}
+      {% assign day_offset = 97 | minus: index %}
+      {% assign day_seconds = day_offset | times: 86400 %}
+      {% assign cell_seconds = now_seconds | minus: day_seconds %}
+      {% assign cell_date = cell_seconds | date: "%Y-%m-%d" %}
+      {% assign cell_label = cell_seconds | date: "%m.%d" %}
+      {% assign day_count = 0 %}
+
+      {% for post in site.posts %}
+        {% assign post_date = post.date | date: "%Y-%m-%d" %}
+        {% if post_date == cell_date %}
+          {% assign day_count = day_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {% if day_count > 0 %}
+        {% assign active_days = active_days | plus: 1 %}
+        {% assign recent_posts = recent_posts | plus: day_count %}
+      {% endif %}
+
+      {% if day_count > 2 %}
+        {% assign level = 3 %}
+      {% else %}
+        {% assign level = day_count %}
+      {% endif %}
+
+      <span class="activity-cell level-{{ level }}" role="listitem" aria-label="{{ cell_label }} 글 {{ day_count }}개" title="{{ cell_label }} · {{ day_count }} posts"></span>
+    {% endfor %}
+  </div>
+
+  <div class="activity-meta" aria-label="최근 발행 요약">
+    <span><strong>{{ recent_posts }}</strong> posts</span>
+    <span><strong>{{ active_days }}</strong> days</span>
+  </div>
+</aside>

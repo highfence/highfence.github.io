@@ -30,17 +30,23 @@ layout: default
   {% endfor %}
 </nav>
 
-<section class="home-intro">
-  <h1 class="sr-only">{{ site.title }}</h1>
-  <p class="terminal-label">$ cat ./about</p>
-  <p class="home-copy">{{ page.intro | default: site.description | newline_to_br }}</p>
-</section>
+<div class="home-layout">
+  <div class="home-main">
+    <section class="home-intro">
+      <h1 class="sr-only">{{ site.title }}</h1>
+      <p class="terminal-label">$ cat ./about</p>
+      <p class="home-copy">{{ page.intro | default: site.description | newline_to_br }}</p>
+    </section>
 
-<section class="post-list-section">
-  <h2 class="section-label">최근 글</h2>
-  <div class="post-list">
-    {% for post in site.posts %}
-      {% include post-row.html post=post %}
-    {% endfor %}
+    <section class="post-list-section">
+      <h2 class="section-label">최근 글</h2>
+      <div class="post-list">
+        {% for post in site.posts %}
+          {% include post-row.html post=post %}
+        {% endfor %}
+      </div>
+    </section>
   </div>
-</section>
+
+  {% include activity-garden.html %}
+</div>
