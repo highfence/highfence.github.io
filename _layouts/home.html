@@ -33,7 +33,7 @@ layout: default
 <section class="home-intro">
   <h1 class="sr-only">{{ site.title }}</h1>
   <p class="terminal-label">$ cat ./about</p>
-  <p class="home-copy">{{ page.intro | default: site.description }}</p>
+  <p class="home-copy">{{ page.intro | default: site.description | newline_to_br }}</p>
 </section>
 
 <section class="post-list-section">
