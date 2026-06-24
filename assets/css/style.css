@@ -280,6 +280,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   font-family:"IBM Plex Mono",monospace;
   font-size:13px;
 }
+.post-content figcaption a{color:var(--accent)}
+.video-embed iframe{
+  display:block;
+  width:100%;
+  aspect-ratio:16/9;
+  border:2px solid var(--ink);
+  border-radius:0;
+  background:var(--code-bg);
+  box-shadow:4px 4px 0 var(--ink);
+}
 .post-content code{
   border:1px solid var(--hair);
   background:var(--chip);
@@ -400,7 +410,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   .toc{display:none}
   .post-title,.page-title{font-size:28px}
   .post-content h2{font-size:22px}
-  .code-frame,.not-found{box-shadow:3px 3px 0 var(--ink)}
+  .code-frame,.not-found,.video-embed iframe{box-shadow:3px 3px 0 var(--ink)}
 }
 
 @media (max-width:720px){

@@ -19,7 +19,10 @@ llama.cpp를 모방하는 작은 구현체(small-llama.cpp??)를 만들어보면
 
 ## #2 UE6
 
-[State of Unreal 2026 Official 4K | Unreal Fest Chicago - YouTube](https://www.youtube.com/watch?v=xXGSvLH9zAs)
+<figure class="video-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/xXGSvLH9zAs" title="State of Unreal 2026 Official 4K | Unreal Fest Chicago" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <figcaption><a href="https://www.youtube.com/watch?v=xXGSvLH9zAs">State of Unreal 2026 Official 4K | Unreal Fest Chicago - YouTube</a></figcaption>
+</figure>
 
 State of Unreal 2026이 진행되면서, 이전에 언급되었던 Unreal Engine 6에 대한 소개가 있었다.
 UE5가 렌더링 파이프라인 위주(Nanite, Lumes, Substrate...)의 엔진 개선이었다면, UE6는 AI를 다분히 의식한, 그래서 엔진 기본 시스템 위주의 개선을 진행한 것으로 보였다.
